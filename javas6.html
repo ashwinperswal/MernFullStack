@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .login-container {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px #ccc;
+            background-color: white;
+        }
+
+        .input-field {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .login-button {
+            width: 100%;
+            background-color: #3897f0;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #2684f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Instagram</h1>
+        <input type="text" class="input-field" placeholder="Username">
+        <input type="password" class="input-field" placeholder="Password">
+        <div class="checkbox-container">
+            <label><input type="checkbox"> Remember Me</label>
+            <a href="#">Forgot Password?</a>
+        </div>
+        <button class="login-button">Log In</button>
+    </div>
+
+    <script>
+        // You can add JavaScript for form validation or other interactivity here
+        document.querySelector('.login-button').addEventListener('click', function() {
+            // Add your login logic here
+            alert('Login button clicked!');
+        });
+    </script>
+</body>
+
+</html>

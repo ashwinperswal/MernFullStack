@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+        display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fdd6d6;
+        }
+
+        .form-container {
+            padding: 30px;
+            border: 2px solid #ff8b8b;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+            <div class="error-message" id="firstNameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+            <div class="error-message" id="lastNameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <div class="error-message" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <div class="error-message" id="passwordError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Re-enter Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <div class="error-message" id="confirmPasswordError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+            <div class="error-message" id="genderError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age">
+            <div class="error-message" id="ageError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber">
+            <div class="error-message" id="phoneNumberError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address"></textarea>
+            <div class="error-message" id="addressError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state">
+            <div class="error-message" id="stateError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="">Choose your country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="India">India</option>
+            </select>
+            <div class="error-message" id="countryError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Languages known:</label>
+            <input type="checkbox" id="english" name="languages" value="English">
+            <label for="english">English</label>
+            <input type="checkbox" id="kannada" name="languages" value="Kannada">
+            <label for="kannada">Kannada</label>
+            <input type="checkbox" id="hindi" name="languages" value="Hindi">
+            <label for="hindi">Hindi</label>
+            <input type="checkbox" id="telugu" name="languages" value="Telugu">
+            <label for="telugu">Telugu</label>
+            <div class="error-message" id="languagesError"></div>
+        </div>
+
+        <div class="form-group">
+            <label><input type="checkbox" id="declaration" name="declaration"> Hereby I declare all the given details are true</label>
+            <div class="error-message" id="declarationError"></div>
+        </div>
+
+        <div class="form-group">
+            <button type="button" onclick="validateForm()">REGISTER</button>
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            // Clear previous error messages
+            var errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(function (element) {
+                element.textContent = '';
+            });
+
+            // Get form values
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var age = document.getElementById('age').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            var address = document.getElementById('address').value;
+            var state = document.getElementById('state').value;
+            var country = document.getElementById('country').value;
+            var languages = document.querySelectorAll('input[name="languages"]:checked');
+            var declaration = document.getElementById('declaration').checked;
+
+            // Validation logic
+            var isValid = true;
+
+            if (firstName.trim() === '') {
+                document.getElementById('firstNameError').textContent = 'First Name is required';
+                isValid = false;
+            }
+
+            if (lastName.trim() === '') {
+                document.getElementById('lastNameError').textContent = 'Last Name is required';
+                isValid = false;
+            }
+
+            if (email.trim() === '') {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            }
+
+            if (password.trim() === '') {
+                document.getElementById('passwordError').textContent = 'Password is required';
+                isValid = false;
+            }
+
+            if (confirmPassword.trim() === '') {
+                document.getElementById('confirmPasswordError').textContent = 'Re-enter Password is required';
+                isValid = false;
+            } else if (confirmPassword !== password) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+
+            if (!gender) {
+                document.getElementById('genderError').textContent = 'Gender is required';
+                isValid = false;
+            }
+
+            if (age.trim() === '') {
+                document.getElementById('ageError').textContent = 'Age is required';
+                isValid = false;
+            }
+
+            if (phoneNumber.trim() === '') {
+                document.getElementById('phoneNumberError').textContent = 'Phone Number is required';
+                isValid = false;
+            }
+
+            if (address.trim() === '') {
+                document.getElementById('addressError').textContent = 'Address is required';
+                isValid = false;
+            }
+
+            if (state.trim() === '') {
+                document.getElementById('stateError').textContent = 'State is required';
+                isValid = false;
+            }
+
+            if (country === '') {
+                document.getElementById('countryError').textContent = 'Country is required';
+                isValid = false;
+            }
+
+            if (languages.length === 0) {
+                document.getElementById('languagesError').textContent = 'At least one language must be known';
+                isValid = false;
+            }
+
+            if (!declaration) {
+                document.getElementById('declarationError').textContent = 'You must agree to the declaration';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Registration successful!');
+                // Add logic to submit the form data to the server here
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time and Date</title>
+</head>
+
+<body>
+    <h1>Current Time and Date</h1>
+
+    <button id="showTimeButton">Show Current Time</button>
+    <button id="showDateButton">Show Current Date</button>
+
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+        // Function to display current time
+        function showCurrentTime() {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+            var timeString = hours + ":" + minutes + ":" + seconds;
+            return timeString;
+        }
+
+        // Function to display current date
+        function showCurrentDate() {
+            var currentDate = new Date();
+            var month = currentDate.getMonth() + 1; // Month starts from 0
+            var day = currentDate.getDate();
+            var year = currentDate.getFullYear();
+            var dateString = month + "/" + day + "/" + year;
+            return dateString;
+        }
+
+        // Event listener for "Show Current Time" button
+        document.getElementById("showTimeButton").addEventListener("click", function () {
+            var currentTimeString = showCurrentTime();
+            document.getElementById("result").textContent = "Current Time: " + currentTimeString;
+        });
+
+        // Event listener for "Show Current Date" button
+        document.getElementById("showDateButton").addEventListener("click", function () {
+            var currentDateString = showCurrentDate();
+            document.getElementById("result").textContent = "Current Date: " + currentDateString;
+        });
+    </script>
+</body>
+
+</html>
